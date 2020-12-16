@@ -1,0 +1,28 @@
+version: "3"
+services:
+
+  jupyter_docker:
+    build: .
+    image: udacity_docker
+    container_name: udacity_docker
+    command: python3 execution_start.py
+    command: /bin/bash
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/usr/app/
+    working_dir: /usr/app/
+    environment:
+      - PYTHONPATH="/usr/app/:${PYTHONPATH}"
+    ports:
+      - 4000:4000
+  
+  postgres:
+    image: postgres:9.6
+    container_name: postgres_udacity
+    environment:
+        - POSTGRES_USER=udacity
+        - POSTGRES_PASSWORD=udacity
+        - POSTGRES_DB=udacity
+    ports:
+        - 8001:5432
