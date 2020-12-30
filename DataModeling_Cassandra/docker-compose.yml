@@ -1,0 +1,26 @@
+version: "3"
+services:
+
+  jupyter_docker:
+    build: .
+    image: udacity_docker_cassandra
+    container_name: udacity_docker_cassandra
+    command: /bin/bash
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/usr/app/
+    working_dir: /usr/app/
+    environment:
+      - PYTHONPATH="/usr/app/:${PYTHONPATH}"
+    ports:
+      - 4000:4000
+  
+  postgres:
+    image: cassandra:latest
+    container_name: cassandra_udacity
+    environment:
+        - CASSANDRA_START_RPC=true
+        - CASSANDRA_CLUSTER_NAME=cassandra_udacity
+    ports:
+        - 9042:9042
