@@ -1,0 +1,28 @@
+version: "3"
+services:
+
+  jupyter_docker:
+    build: .
+    image: boticario_teste
+    container_name: boticario_teste
+    command: python3 execution_start.py
+    command: /bin/bash
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/usr/app/
+    working_dir: /usr/app/
+    environment:
+      - PYTHONPATH="/usr/app/:${PYTHONPATH}"
+    ports:
+      - 4000:4000
+  
+  postgres:
+    image: postgres:9.6
+    container_name: postgres_boticario
+    environment:
+        - POSTGRES_USER=boticaro
+        - POSTGRES_PASSWORD=boticario
+        - POSTGRES_DB=boticario
+    ports:
+        - 8001:5432
