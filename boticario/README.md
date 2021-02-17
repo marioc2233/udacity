@@ -6,7 +6,7 @@ Go to project folder and execute the docker-compose builder: docker-compose -f d
 
 After the build is done enter the docker: docker exec -it boticario_teste bash
 
-Inside the docker run the script python: python3 execution_start.py; This begin to Cscript will execute all the steps necessary to complete the test;
+Inside the docker run the script python: python3 execution_start.py; This begin to execute the script for all the steps necessary to complete the test;
 
 After finished you can run the jupyter notebook: jupyter notebook --ip 0.0.0.0 --port 4000 --allow-root
 
